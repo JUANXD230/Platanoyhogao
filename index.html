@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,194 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plátano & Hogao</title>
 
-<!-- Animaciones -->
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* {margin:0;padding:0;box-sizing:border-box;}
+body {font-family:'Segoe UI';background:#111;color:white;scroll-behavior:smooth;}
 
-body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #111;
-    color: white;
-}
-
-/* HEADER */
 header {
-    position: fixed;
-    width: 100%;
-    background: rgba(0,0,0,0.7);
-    padding: 15px 50px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 1000;
+position:fixed;width:100%;display:flex;justify-content:space-between;
+padding:15px 40px;background:rgba(0,0,0,0.8);z-index:1000;
 }
 
-header h1 {
-    color: #ff9800;
-}
+header h1 {color:#ff9800;}
 
-/* HERO */
+nav a {
+margin:0 10px;color:white;text-decoration:none;transition:0.3s;
+}
+nav a:hover {color:#ff9800;}
+
+section {padding:100px 40px;text-align:center;}
+
 .hero {
-    height: 100vh;
-    background: url('https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+height:100vh;
+background:url('https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f') center/cover;
+display:flex;align-items:center;justify-content:center;
 }
 
-.hero h2 {
-    font-size: 3rem;
-    animation: fadeIn 2s ease;
-}
+.hero h2 {font-size:3rem;}
 
 .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 25px;
-    background: #ff9800;
-    color: black;
-    text-decoration: none;
-    border-radius: 30px;
-    transition: 0.3s;
+margin-top:20px;padding:12px 25px;background:#ff9800;
+color:black;border-radius:30px;text-decoration:none;
+transition:0.3s;
 }
-
-.btn:hover {
-    background: #e65100;
-    transform: scale(1.1);
-}
-
-/* MENU */
-.menu {
-    padding: 80px 50px;
-    text-align: center;
-}
-
-.menu h2 {
-    margin-bottom: 40px;
-}
+.btn:hover {transform:scale(1.1);background:#e65100;}
 
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+display:flex;flex-wrap:wrap;gap:20px;justify-content:center;
 }
 
 .card {
-    background: #222;
-    padding: 20px;
-    border-radius: 15px;
-    width: 250px;
-    transition: 0.3s;
+background:#222;padding:20px;border-radius:15px;width:250px;
+transition:0.3s;
+}
+.card:hover {transform:translateY(-10px);background:#333;}
+
+.card h3 {color:#ff9800;}
+
+.historia {background:#1a1a1a;}
+
+.contacto input, .contacto textarea {
+width:80%;padding:10px;margin:10px;border:none;border-radius:5px;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    background: #333;
-}
+footer {background:black;padding:20px;}
 
-.card h3 {
-    color: #ff9800;
-}
-
-/* HISTORIA */
-.historia {
-    padding: 80px;
-    background: #1a1a1a;
-    text-align: center;
-}
-
-/* FOOTER */
-footer {
-    background: black;
-    padding: 20px;
-    text-align: center;
-}
-
-/* WHATSAPP */
 .whatsapp {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #25D366;
-    padding: 15px;
-    border-radius: 50%;
-    font-size: 20px;
-    color: white;
-    text-decoration: none;
+position:fixed;bottom:20px;right:20px;background:#25D366;
+padding:15px;border-radius:50%;text-decoration:none;color:white;
 }
 
-/* ANIMACIÓN */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>🍌 Plátano & Hogao</h1>
-    <nav>Menú | Contacto</nav>
+<h1>🍌 Plátano & Hogao</h1>
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#menu">Menú</a>
+<a href="#nosotros">Nosotros</a>
+<a href="#contacto">Contacto</a>
+</nav>
 </header>
 
-<section class="hero">
-    <div>
-        <h2>El sabor colombiano que derrite corazones 🔥</h2>
-        <a href="#" class="btn">Ordena ahora</a>
-    </div>
+<section id="inicio" class="hero">
+<div data-aos="fade-up">
+<h2>El sabor colombiano que derrite corazones 🔥</h2>
+<a href="https://wa.me/573000000000?text=Hola quiero un plátano con hogao 😋" class="btn">Pedir ahora</a>
+</div>
 </section>
 
-<section class="menu">
-    <h2 data-aos="fade-up">Nuestros Plátanos</h2>
+<section id="menu">
+<h2 data-aos="fade-up">Nuestro Menú</h2>
+<div class="cards">
 
-    <div class="cards">
+<div class="card" data-aos="zoom-in">
+<h3>Clásico Campesino</h3>
+<p>Hogao + queso campesino</p>
+</div>
 
-        <div class="card" data-aos="zoom-in">
-            <h3>Clásico Campesino</h3>
-            <p>Queso campesino + hogao</p>
-        </div>
+<div class="card" data-aos="zoom-in">
+<h3>Doble Crema Melt</h3>
+<p>Extra cremoso</p>
+</div>
 
-        <div class="card" data-aos="zoom-in">
-            <h3>Doble Crema Melt</h3>
-            <p>Queso cremoso irresistible</p>
-        </div>
+<div class="card" data-aos="zoom-in">
+<h3>Cheddar Power</h3>
+<p>Sabor intenso</p>
+</div>
 
-        <div class="card" data-aos="zoom-in">
-            <h3>Cheddar Power</h3>
-            <p>Sabor intenso</p>
-        </div>
+<div class="card" data-aos="zoom-in">
+<h3>Mozzarella Stretch</h3>
+<p>Elástico delicioso</p>
+</div>
 
-        <div class="card" data-aos="zoom-in">
-            <h3>Mozzarella Stretch</h3>
-            <p>Elástico y delicioso</p>
-        </div>
+<div class="card" data-aos="zoom-in">
+<h3>Costeño Crunch</h3>
+<p>Toque salado colombiano</p>
+</div>
 
-        <div class="card" data-aos="zoom-in">
-            <h3>Costeño Crunch</h3>
-            <p>Toque salado colombiano</p>
-        </div>
-
-    </div>
+</div>
 </section>
 
-<section class="historia" data-aos="fade-up">
-    <h2>Nuestra Historia</h2>
-    <p>
-    Nacimos del amor por la cocina colombiana, llevando el plátano con hogao 
-    a otro nivel con combinaciones irresistibles de queso.
-    </p>
+<section id="nosotros" class="historia" data-aos="fade-up">
+<h2>Nosotros</h2>
+<p>
+Somos una marca colombiana que transforma el plátano tradicional en una experiencia gourmet,
+combinando el sabor del hogao con quesos irresistibles.
+</p>
+</section>
+
+<section id="contacto" class="contacto" data-aos="fade-up">
+<h2>Contacto</h2>
+<input type="text" placeholder="Tu nombre">
+<input type="email" placeholder="Tu correo">
+<textarea placeholder="Tu mensaje"></textarea><br>
+<a href="https://wa.me/573000000000" class="btn">Enviar por WhatsApp</a>
 </section>
 
 <footer>
-    <p>📍 Bogotá | 📲 WhatsApp: 3000000000</p>
+<p>📍 Bogotá | 📲 3000000000 | Instagram: @platanoyhogao</p>
 </footer>
 
 <a href="https://wa.me/573000000000" class="whatsapp">💬</a>
