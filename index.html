@@ -8,63 +8,116 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
 <style>
-* {margin:0;padding:0;box-sizing:border-box;}
-body {font-family:'Segoe UI';background:#111;color:white;scroll-behavior:smooth;}
-
-header {
-position:fixed;width:100%;display:flex;justify-content:space-between;
-padding:15px 40px;background:rgba(0,0,0,0.8);z-index:1000;
+body {
+    margin:0;
+    font-family: 'Georgia', serif;
+    background:#f5f1e8;
+    color:#2b2b2b;
 }
 
-header h1 {color:#ff9800;}
+/* NAV */
+header {
+    position:fixed;
+    width:100%;
+    background:white;
+    display:flex;
+    justify-content:space-between;
+    padding:20px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    z-index:1000;
+}
+
+header h1 {
+    color:#c47a2c;
+}
 
 nav a {
-margin:0 10px;color:white;text-decoration:none;transition:0.3s;
+    margin:0 15px;
+    text-decoration:none;
+    color:#333;
 }
-nav a:hover {color:#ff9800;}
 
-section {padding:100px 40px;text-align:center;}
+nav a:hover {
+    color:#c47a2c;
+}
 
+/* HERO */
 .hero {
-height:100vh;
-background:url('https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f') center/cover;
-display:flex;align-items:center;justify-content:center;
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
 }
 
-.hero h2 {font-size:3rem;}
+.hero h2 {
+    font-size:3rem;
+}
 
+/* BOTÓN */
 .btn {
-margin-top:20px;padding:12px 25px;background:#ff9800;
-color:black;border-radius:30px;text-decoration:none;
-transition:0.3s;
+    background:#c47a2c;
+    padding:12px 25px;
+    border-radius:30px;
+    color:white;
+    text-decoration:none;
 }
-.btn:hover {transform:scale(1.1);background:#e65100;}
 
+/* SECCIONES */
+section {
+    padding:100px 40px;
+    text-align:center;
+}
+
+/* MENÚ */
 .cards {
-display:flex;flex-wrap:wrap;gap:20px;justify-content:center;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
 }
 
 .card {
-background:#222;padding:20px;border-radius:15px;width:250px;
-transition:0.3s;
-}
-.card:hover {transform:translateY(-10px);background:#333;}
-
-.card h3 {color:#ff9800;}
-
-.historia {background:#1a1a1a;}
-
-.contacto input, .contacto textarea {
-width:80%;padding:10px;margin:10px;border:none;border-radius:5px;
+    background:white;
+    padding:20px;
+    width:250px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
 }
 
-footer {background:black;padding:20px;}
+.card:hover {
+    transform:translateY(-10px);
+}
 
+.card h3 {
+    color:#c47a2c;
+}
+
+/* HISTORIA */
+.historia {
+    background:#fff;
+}
+
+/* FOOTER */
+footer {
+    background:#2b2b2b;
+    color:white;
+    padding:30px;
+}
+
+/* WHATSAPP */
 .whatsapp {
-position:fixed;bottom:20px;right:20px;background:#25D366;
-padding:15px;border-radius:50%;text-decoration:none;color:white;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    padding:15px;
+    border-radius:50%;
+    color:white;
 }
-
 </style>
 </head>
 
@@ -75,20 +128,23 @@ padding:15px;border-radius:50%;text-decoration:none;color:white;
 <nav>
 <a href="#inicio">Inicio</a>
 <a href="#menu">Menú</a>
-<a href="#nosotros">Nosotros</a>
+<a href="#nosotros">Filosofía</a>
 <a href="#contacto">Contacto</a>
 </nav>
 </header>
 
 <section id="inicio" class="hero">
 <div data-aos="fade-up">
-<h2>El sabor colombiano que derrite corazones 🔥</h2>
-<a href="https://wa.me/573000000000?text=Hola quiero un plátano con hogao 😋" class="btn">Pedir ahora</a>
+<h2>Transformamos el plátano en arte colombiano</h2>
+<p>Tradición, sabor y emoción en cada bocado</p>
+<br>
+<a href="https://wa.me/573000000000" class="btn">Ordenar ahora</a>
 </div>
 </section>
 
 <section id="menu">
-<h2 data-aos="fade-up">Nuestro Menú</h2>
+<h2 data-aos="fade-up">Nuestra Experiencia</h2>
+
 <div class="cards">
 
 <div class="card" data-aos="zoom-in">
@@ -97,46 +153,46 @@ padding:15px;border-radius:50%;text-decoration:none;color:white;
 </div>
 
 <div class="card" data-aos="zoom-in">
-<h3>Doble Crema Melt</h3>
-<p>Extra cremoso</p>
+<h3>Doble Crema</h3>
+<p>Suavidad que enamora</p>
 </div>
 
 <div class="card" data-aos="zoom-in">
-<h3>Cheddar Power</h3>
-<p>Sabor intenso</p>
+<h3>Cheddar Fusión</h3>
+<p>Intensidad y carácter</p>
 </div>
 
 <div class="card" data-aos="zoom-in">
 <h3>Mozzarella Stretch</h3>
-<p>Elástico delicioso</p>
+<p>Textura irresistible</p>
 </div>
 
 <div class="card" data-aos="zoom-in">
-<h3>Costeño Crunch</h3>
-<p>Toque salado colombiano</p>
+<h3>Costeño Tradición</h3>
+<p>Autenticidad colombiana</p>
 </div>
 
 </div>
 </section>
 
 <section id="nosotros" class="historia" data-aos="fade-up">
-<h2>Nosotros</h2>
+<h2>Nuestra Filosofía</h2>
 <p>
-Somos una marca colombiana que transforma el plátano tradicional en una experiencia gourmet,
-combinando el sabor del hogao con quesos irresistibles.
+Creemos que la comida no solo alimenta el cuerpo, sino el alma.
+Nuestro plátano con hogao es una expresión de identidad colombiana,
+donde cada ingrediente cuenta una historia y cada sabor conecta emociones.
 </p>
 </section>
 
-<section id="contacto" class="contacto" data-aos="fade-up">
+<section id="contacto" data-aos="fade-up">
 <h2>Contacto</h2>
-<input type="text" placeholder="Tu nombre">
-<input type="email" placeholder="Tu correo">
-<textarea placeholder="Tu mensaje"></textarea><br>
-<a href="https://wa.me/573000000000" class="btn">Enviar por WhatsApp</a>
+<p>📍 Bogotá</p>
+<p>📲 3000000000</p>
+<a href="https://wa.me/573000000000" class="btn">Escríbenos</a>
 </section>
 
 <footer>
-<p>📍 Bogotá | 📲 3000000000 | Instagram: @platanoyhogao</p>
+<p>© 2026 Plátano & Hogao - Experiencia Colombiana</p>
 </footer>
 
 <a href="https://wa.me/573000000000" class="whatsapp">💬</a>
