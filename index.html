@@ -29,17 +29,17 @@ header {
 
 header h1 {
     font-size: 20px;
+    color: #8c5a2b;
 }
 
 nav a {
     margin: 0 15px;
     text-decoration: none;
     color: #333;
-    font-size: 14px;
 }
 
 nav a:hover {
-    color: #8c5a2b;
+    color: #c62828;
 }
 
 /* HERO */
@@ -47,7 +47,7 @@ nav a:hover {
     height: 100vh;
     background: 
     linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
-    url('https://picsum.photos/1200/800') center/cover;
+    url('https://images.unsplash.com/photo-1604908176997-431f68d5e7d3') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,14 +63,15 @@ nav a:hover {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 28px;
-    background: #8c5a2b;
-    color: white;
+    background: #f4c430; /* amarillo Colombia */
+    color: black;
     border-radius: 25px;
     text-decoration: none;
 }
 
 .btn:hover {
-    background: #6f451f;
+    background: #c62828; /* rojo */
+    color: white;
 }
 
 /* SECCIONES */
@@ -109,7 +110,7 @@ section {
 .price {
     margin-top: 10px;
     font-weight: bold;
-    color: #8c5a2b;
+    color: #c62828;
 }
 
 /* HISTORIA */
@@ -118,7 +119,7 @@ section {
 }
 
 .historia img {
-    width: 280px;
+    width: 300px;
     border-radius: 10px;
     margin: 20px 0;
 }
@@ -145,7 +146,6 @@ footer {
     padding: 14px;
     border-radius: 50%;
     color: white;
-    text-decoration: none;
 }
 </style>
 </head>
@@ -159,7 +159,6 @@ footer {
 <a href="#menu">Menú</a>
 <a href="#historia">Historia</a>
 <a href="#ingredientes">Materia Prima</a>
-<a href="#nosotros">Nosotros</a>
 <a href="#contacto">Contacto</a>
 </nav>
 </header>
@@ -167,7 +166,7 @@ footer {
 <section id="inicio" class="hero">
 <div data-aos="fade-up">
 <h2>Cocina colombiana con identidad</h2>
-<a href="https://wa.me/573000000000?text=Hola, quiero hacer un pedido" class="btn">Realizar pedido</a>
+<a href="https://wa.me/573000000000" class="btn">Realizar pedido</a>
 </div>
 </section>
 
@@ -177,37 +176,37 @@ footer {
 <div class="cards">
 
 <div class="card" data-aos="fade-up">
-<img src="https://picsum.photos/300/200?platanoverde">
+<img src="https://images.unsplash.com/photo-1625944198970-90c4d4c4a6a6">
 <h3>Clásico Campesino</h3>
-<p>Plátano maduro, hogao tradicional y queso campesino</p>
+<p>Plátano maduro con hogao y queso campesino</p>
 <div class="price">$8.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
-<img src="https://picsum.photos/300/200?quesoartesanal">
+<img src="https://images.unsplash.com/photo-1605475128023-6d7a9b0ce3dc">
 <h3>Doble Crema</h3>
-<p>Plátano con hogao y queso doble crema</p>
+<p>Plátano con hogao y queso cremoso</p>
 <div class="price">$9.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
-<img src="https://picsum.photos/300/200?quesocolombiano">
+<img src="https://images.unsplash.com/photo-1585238342028-4aefb26cf0c4">
 <h3>Fusión</h3>
-<p>Plátano con hogao y mezcla de quesos</p>
+<p>Plátano con mezcla de quesos</p>
 <div class="price">$10.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
-<img src="https://picsum.photos/300/200?platano">
+<img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092">
 <h3>Tradicional</h3>
-<p>Plátano con hogao y queso suave</p>
+<p>Plátano con hogao clásico</p>
 <div class="price">$9.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
-<img src="https://picsum.photos/300/200?quesocosteño">
+<img src="https://images.unsplash.com/photo-1598514982575-3a1bb6c1f8a2">
 <h3>Costeño</h3>
-<p>Plátano con hogao y queso costeño tradicional</p>
+<p>Plátano con queso costeño</p>
 <div class="price">$9.000</div>
 </div>
 
@@ -217,19 +216,14 @@ footer {
 <section id="historia" class="historia" data-aos="fade-up">
 <h2>Historia del patacón</h2>
 
-<img src="https://picsum.photos/300/200?cocina">
+<img src="https://images.unsplash.com/photo-1604908176997-431f68d5e7d3">
 
 <p>
-El patacón es una preparación tradicional colombiana elaborada a partir del plátano verde. 
-Su proceso consiste en freír, aplastar y volver a freír, logrando una textura crujiente característica.
+El patacón es una preparación tradicional colombiana elaborada a partir del plátano verde, símbolo de identidad cultural en el país.
 </p>
 
 <p>
-Con el tiempo, se ha convertido en un símbolo gastronómico del país, presente en múltiples regiones y contextos culturales.
-</p>
-
-<p>
-El plátano representa identidad, tradición y cultura en Colombia, siendo base fundamental de la alimentación local.
+Su técnica de fritura doble le da una textura crujiente característica, siendo parte fundamental de la gastronomía colombiana.
 </p>
 
 </section>
@@ -237,29 +231,16 @@ El plátano representa identidad, tradición y cultura en Colombia, siendo base 
 <section id="ingredientes" class="historia" data-aos="fade-up">
 <h2>Materia prima</h2>
 
-<img src="https://picsum.photos/300/200?mercado">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
 
 <p>
-Nuestra propuesta se basa en ingredientes esenciales de la tradición colombiana. 
-El plátano es uno de los pilares de la alimentación nacional.
+El plátano, el hogao y los quesos tradicionales representan la base de la cocina colombiana.
 </p>
 
 <p>
-El hogao, elaborado con tomate y cebolla larga, aporta sabor e identidad a cada preparación.
+Cada ingrediente refleja tradición, territorio y procesos artesanales que mantienen viva la identidad gastronómica.
 </p>
 
-<p>
-Los quesos tradicionales reflejan procesos artesanales que conservan su autenticidad y valor cultural.
-</p>
-
-</section>
-
-<section id="nosotros" data-aos="fade-up">
-<h2>Nuestra propuesta</h2>
-<p>
-Plátano & Hogao es una reinterpretación de la cocina colombiana, 
-resaltando ingredientes tradicionales con una visión contemporánea.
-</p>
 </section>
 
 <section id="contacto" data-aos="fade-up">
