@@ -29,7 +29,6 @@ header {
 
 header h1 {
     font-size: 20px;
-    letter-spacing: 1px;
 }
 
 nav a {
@@ -46,12 +45,13 @@ nav a:hover {
 /* HERO */
 .hero {
     height: 100vh;
-    background: url('https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f') center/cover;
+    background: 
+    linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)),
+    url('https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
 }
 
 .hero h2 {
@@ -102,7 +102,9 @@ section {
     transform: translateY(-8px);
 }
 
-.card h3 {
+.card img {
+    width: 100%;
+    border-radius: 8px;
     margin-bottom: 10px;
 }
 
@@ -115,8 +117,18 @@ section {
 /* HISTORIA */
 .historia {
     background: #ffffff;
-    max-width: 800px;
-    margin: auto;
+}
+
+.historia img {
+    width: 280px;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.historia p {
+    max-width: 700px;
+    margin: 10px auto;
+    line-height: 1.6;
 }
 
 /* FOOTER */
@@ -147,6 +159,7 @@ footer {
 <nav>
 <a href="#inicio">Inicio</a>
 <a href="#menu">Menú</a>
+<a href="#historia">Historia</a>
 <a href="#nosotros">Nosotros</a>
 <a href="#contacto">Contacto</a>
 </nav>
@@ -165,44 +178,67 @@ footer {
 <div class="cards">
 
 <div class="card" data-aos="fade-up">
+<img src="https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f">
 <h3>Clásico Campesino</h3>
 <p>Plátano maduro, hogao tradicional y queso campesino</p>
 <div class="price">$8.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
+<img src="https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f">
 <h3>Doble Crema</h3>
-<p>Plátano maduro con hogao y queso doble crema</p>
+<p>Plátano con hogao y queso doble crema</p>
 <div class="price">$9.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
+<img src="https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f">
 <h3>Cheddar</h3>
-<p>Plátano con hogao y queso cheddar fundido</p>
+<p>Plátano con hogao y queso cheddar</p>
 <div class="price">$10.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
+<img src="https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f">
 <h3>Mozzarella</h3>
-<p>Plátano con hogao y queso mozzarella gratinado</p>
+<p>Plátano con hogao y queso mozzarella</p>
 <div class="price">$10.000</div>
 </div>
 
 <div class="card" data-aos="fade-up">
+<img src="https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f">
 <h3>Costeño</h3>
-<p>Plátano con hogao y queso costeño tradicional</p>
+<p>Plátano con hogao y queso costeño</p>
 <div class="price">$9.000</div>
 </div>
 
 </div>
 </section>
 
-<section id="nosotros" class="historia" data-aos="fade-up">
+<section id="historia" class="historia" data-aos="fade-up">
+<h2>Historia del patacón</h2>
+
+<img src="https://images.unsplash.com/photo-1604908554165-3fcd9e9bde0f">
+
+<p>
+El patacón es una de las preparaciones más representativas de la cocina colombiana, especialmente en las regiones Caribe y Pacífica. Se elabora a partir del plátano verde, el cual es frito, aplastado y nuevamente frito hasta lograr una textura crujiente.
+</p>
+
+<p>
+A lo largo del tiempo, el patacón ha trascendido su origen humilde para convertirse en un símbolo gastronómico nacional, presente en múltiples contextos culinarios.
+</p>
+
+<p>
+El plátano representa identidad, tradición y cultura en Colombia, siendo un alimento esencial en la dieta diaria y en la construcción de la cocina local.
+</p>
+
+</section>
+
+<section id="nosotros" data-aos="fade-up">
 <h2>Nuestra propuesta</h2>
 <p>
-Plátano & Hogao nace como una reinterpretación de la cocina tradicional colombiana.
-Buscamos resaltar ingredientes auténticos mediante preparaciones simples,
-equilibradas y con identidad. Cada plato representa una conexión con el sabor local.
+Plátano & Hogao nace como una reinterpretación de la cocina tradicional colombiana,
+resaltando ingredientes auténticos mediante preparaciones simples y equilibradas.
 </p>
 </section>
 
