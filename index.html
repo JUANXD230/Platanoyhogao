@@ -5,13 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pataconazo</title>
 
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
 <style>
 body {
     margin: 0;
     font-family: 'Georgia', serif;
-    background: #f4f1ea;
+    background: linear-gradient(to bottom, #fff8e1, #f4f1ea);
+    color: #1f1f1f;
 }
 
 /* NAV */
@@ -27,68 +26,74 @@ header {
 }
 
 header h1 {
-    font-size: 20px;
-    color: #8c5a2b;
+    color: #c62828;
 }
 
 /* HERO */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
     url('https://images.unsplash.com/photo-1604908176997-431f68d5e7d3') center/cover;
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
 }
 
 /* BOTÓN */
 .btn {
     margin-top: 10px;
-    padding: 10px 20px;
-    background: #f4c430;
-    border-radius: 20px;
+    padding: 12px 25px;
+    background: #ffca28;
+    border-radius: 25px;
     cursor: pointer;
     border: none;
+    transition: 0.3s;
 }
 
-/* MENÚ */
+.btn:hover {
+    background: #c62828;
+    color: white;
+}
+
+/* SECCIONES */
 section {
     padding: 100px 40px;
     text-align: center;
 }
 
+/* CARDS */
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
 }
 
 .card {
     background: white;
-    padding: 25px;
+    padding: 20px;
     width: 260px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
     transition: 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-10px) scale(1.02);
 }
 
 .card img {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .price {
-    font-weight: bold;
     color: #c62828;
+    font-weight: bold;
 }
 
-/* CARRITO PRO */
+/* CARRITO */
 .cart {
     position: fixed;
     right: 20px;
@@ -98,32 +103,11 @@ section {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    z-index: 999;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 8px 0;
-}
-
-.qty {
-    display: flex;
-    gap: 5px;
-}
-
-.qty button {
-    background: #c62828;
-    color: white;
-    border: none;
-    padding: 3px 8px;
-    cursor: pointer;
 }
 
 .checkout {
     margin-top: 10px;
-    background: #25D366;
+    background: #2e7d32;
     color: white;
     padding: 10px;
     border-radius: 8px;
@@ -150,7 +134,7 @@ section {
 </header>
 
 <section class="hero">
-<h2>El sabor real del patacón colombiano</h2>
+<h2>El verdadero sabor del patacón colombiano</h2>
 </section>
 
 <section>
@@ -160,10 +144,10 @@ section {
 
 <div class="card">
 <img src="https://images.unsplash.com/photo-1625944525533-473f1b9c9b87">
-<h3>Clásico Campesino</h3>
+<h3>Clásico</h3>
 <p>Patacón con hogao y queso campesino</p>
 <div class="price">$8000</div>
-<button class="btn" onclick="addToCart('Clásico Campesino',8000)">Agregar</button>
+<button class="btn" onclick="addToCart('Clásico',8000)">Agregar</button>
 </div>
 
 <div class="card">
@@ -193,84 +177,41 @@ section {
 <div class="checkout" onclick="sendWhatsApp()">Pedir por WhatsApp</div>
 </div>
 
-<a href="https://wa.me/573000000000" class="whatsapp">W</a>
+<a href="#" class="whatsapp">W</a>
 
 <script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function saveCart(){
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
+let cart = [];
 
 function addToCart(name, price){
     let item = cart.find(p => p.name === name);
-
     if(item){
         item.qty++;
     } else {
         cart.push({name, price, qty:1});
     }
-
-    saveCart();
-    renderCart();
-}
-
-function changeQty(index, change){
-    cart[index].qty += change;
-
-    if(cart[index].qty <= 0){
-        cart.splice(index,1);
-    }
-
-    saveCart();
     renderCart();
 }
 
 function renderCart(){
     let container = document.getElementById("cartItems");
     let total = 0;
-
     container.innerHTML = "";
 
-    cart.forEach((item, index)=>{
+    cart.forEach(item=>{
         total += item.price * item.qty;
-
-        container.innerHTML += `
-        <div class="cart-item">
-            <div>
-                ${item.name}<br>
-                $${item.price} x ${item.qty}
-            </div>
-            <div class="qty">
-                <button onclick="changeQty(${index},-1)">-</button>
-                <button onclick="changeQty(${index},1)">+</button>
-            </div>
-        </div>`;
+        container.innerHTML += `${item.name} x${item.qty}<br>`;
     });
 
     document.getElementById("total").innerText = total;
 }
 
 function sendWhatsApp(){
-    if(cart.length === 0){
-        alert("Carrito vacío");
-        return;
-    }
-
-    let message = "Hola, quiero pedir:%0A";
-    let total = 0;
-
+    let message = "Pedido:%0A";
     cart.forEach(item=>{
-        message += `- ${item.name} x${item.qty} ($${item.price * item.qty})%0A`;
-        total += item.price * item.qty;
+        message += `- ${item.name} x${item.qty}%0A`;
     });
-
-    message += `Total: $${total}`;
-
     window.open(`https://wa.me/573000000000?text=${message}`);
 }
-
-renderCart();
 </script>
 
 </body>
