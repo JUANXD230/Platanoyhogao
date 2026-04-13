@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plátano & Hogao</title>
 
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
@@ -16,68 +18,127 @@ body {
 header {
     position: fixed;
     width: 100%;
-    background: white;
+    background: #ffffff;
     display: flex;
     justify-content: space-between;
     padding: 18px 40px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    z-index: 1000;
 }
 
+header h1 {
+    font-size: 20px;
+    color: #8c5a2b;
+}
+
+/* HERO */
 .hero {
     height: 100vh;
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
+    url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 /* BOTÓN */
 .btn {
+    margin-top: 10px;
     padding: 10px 20px;
     background: #f4c430;
     border-radius: 20px;
     cursor: pointer;
+    border: none;
 }
 
-/* CARDS */
+/* MENÚ */
+section {
+    padding: 100px 40px;
+    text-align: center;
+}
+
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 .card {
     background: white;
-    padding: 20px;
-    width: 250px;
+    padding: 25px;
+    width: 260px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card img {
+    width: 100%;
     border-radius: 8px;
 }
 
 .price {
-    color: red;
     font-weight: bold;
+    color: #c62828;
 }
 
-/* CARRITO */
+/* CARRITO PRO */
 .cart {
     position: fixed;
     right: 20px;
-    top: 80px;
-    width: 250px;
+    top: 90px;
+    width: 300px;
     background: white;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-}
-
-.cart h3 {
-    margin-top: 0;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    z-index: 999;
 }
 
 .cart-item {
     display: flex;
     justify-content: space-between;
-    margin: 5px 0;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.qty {
+    display: flex;
+    gap: 5px;
+}
+
+.qty button {
+    background: #c62828;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    cursor: pointer;
+}
+
+.checkout {
+    margin-top: 10px;
+    background: #25D366;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* WHATSAPP */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    padding: 14px;
+    border-radius: 50%;
+    color: white;
 }
 </style>
 </head>
@@ -89,7 +150,7 @@ header {
 </header>
 
 <section class="hero">
-<h2>Cocina colombiana</h2>
+<h2>Cocina colombiana con identidad</h2>
 </section>
 
 <section>
@@ -98,24 +159,27 @@ header {
 <div class="cards">
 
 <div class="card">
+<img src="https://images.unsplash.com/photo-1625944525533-473f1b9c9b87">
 <h3>Clásico Campesino</h3>
 <p>Plátano con hogao y queso</p>
-<div class="price">8000</div>
-<button onclick="addToCart('Clásico',8000)">Agregar</button>
+<div class="price">$8000</div>
+<button class="btn" onclick="addToCart('Clásico Campesino',8000)">Agregar</button>
 </div>
 
 <div class="card">
+<img src="https://images.unsplash.com/photo-1604908812177-1cfa3a8b8c4d">
 <h3>Doble Crema</h3>
 <p>Plátano con queso cremoso</p>
-<div class="price">9000</div>
-<button onclick="addToCart('Doble',9000)">Agregar</button>
+<div class="price">$9000</div>
+<button class="btn" onclick="addToCart('Doble Crema',9000)">Agregar</button>
 </div>
 
 <div class="card">
+<img src="https://images.unsplash.com/photo-1617196037304-1e7a1c2d7e6a">
 <h3>Fusión</h3>
 <p>Mezcla de quesos</p>
-<div class="price">10000</div>
-<button onclick="addToCart('Fusión',10000)">Agregar</button>
+<div class="price">$10000</div>
+<button class="btn" onclick="addToCart('Fusión',10000)">Agregar</button>
 </div>
 
 </div>
@@ -123,42 +187,90 @@ header {
 
 <!-- CARRITO -->
 <div class="cart">
-<h3>Carrito</h3>
+<h3>Tu pedido</h3>
 <div id="cartItems"></div>
 <p>Total: $<span id="total">0</span></p>
+<div class="checkout" onclick="sendWhatsApp()">Pedir por WhatsApp</div>
 </div>
 
+<a href="https://wa.me/573000000000" class="whatsapp">W</a>
+
 <script>
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function saveCart(){
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 function addToCart(name, price){
-    cart.push({name, price});
+    let item = cart.find(p => p.name === name);
+
+    if(item){
+        item.qty++;
+    } else {
+        cart.push({name, price, qty:1});
+    }
+
+    saveCart();
     renderCart();
 }
 
-function removeItem(index){
-    cart.splice(index,1);
+function changeQty(index, change){
+    cart[index].qty += change;
+
+    if(cart[index].qty <= 0){
+        cart.splice(index,1);
+    }
+
+    saveCart();
     renderCart();
 }
 
 function renderCart(){
-    let cartItems = document.getElementById("cartItems");
+    let container = document.getElementById("cartItems");
     let total = 0;
 
-    cartItems.innerHTML = "";
+    container.innerHTML = "";
 
     cart.forEach((item, index)=>{
-        total += item.price;
+        total += item.price * item.qty;
 
-        cartItems.innerHTML += `
+        container.innerHTML += `
         <div class="cart-item">
-            ${item.name} - $${item.price}
-            <button onclick="removeItem(${index})">X</button>
+            <div>
+                ${item.name}<br>
+                $${item.price} x ${item.qty}
+            </div>
+            <div class="qty">
+                <button onclick="changeQty(${index},-1)">-</button>
+                <button onclick="changeQty(${index},1)">+</button>
+            </div>
         </div>`;
     });
 
     document.getElementById("total").innerText = total;
 }
+
+function sendWhatsApp(){
+    if(cart.length === 0){
+        alert("Carrito vacío");
+        return;
+    }
+
+    let message = "Hola, quiero pedir:%0A";
+    let total = 0;
+
+    cart.forEach(item=>{
+        message += `- ${item.name} x${item.qty} ($${item.price * item.qty})%0A`;
+        total += item.price * item.qty;
+    });
+
+    message += `Total: $${total}`;
+
+    window.open(`https://wa.me/573000000000?text=${message}`);
+}
+
+renderCart();
 </script>
 
 </body>
