@@ -5,146 +5,79 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plátano & Hogao</title>
 
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
 <style>
 body {
     margin: 0;
     font-family: 'Georgia', serif;
     background: #f4f1ea;
-    color: #1f1f1f;
 }
 
 /* NAV */
 header {
     position: fixed;
     width: 100%;
-    background: #ffffff;
+    background: white;
     display: flex;
     justify-content: space-between;
     padding: 18px 40px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-header h1 {
-    font-size: 20px;
-    color: #8c5a2b;
-}
-
-nav a {
-    margin: 0 15px;
-    text-decoration: none;
-    color: #333;
-}
-
-nav a:hover {
-    color: #c62828;
-}
-
-/* HERO */
 .hero {
     height: 100vh;
-    background: 
-    linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)),
-    url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-}
-
-.hero h2 {
-    font-size: 42px;
 }
 
 /* BOTÓN */
 .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 28px;
+    padding: 10px 20px;
     background: #f4c430;
-    color: black;
-    border-radius: 25px;
-    text-decoration: none;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
-.btn:hover {
-    background: #c62828;
-    color: white;
-}
-
-/* SECCIONES */
-section {
-    padding: 100px 40px;
-    text-align: center;
-}
-
-/* MENÚ */
+/* CARDS */
 .cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 .card {
     background: white;
-    padding: 25px;
-    width: 260px;
+    padding: 20px;
+    width: 250px;
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-}
-
-.card img {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
 }
 
 .price {
-    margin-top: 10px;
+    color: red;
     font-weight: bold;
-    color: #c62828;
 }
 
-/* HISTORIA */
-.historia {
-    background: #ffffff;
-}
-
-.historia img {
-    width: 300px;
-    border-radius: 10px;
-    margin: 20px 0;
-}
-
-.historia p {
-    max-width: 700px;
-    margin: 10px auto;
-    line-height: 1.6;
-}
-
-/* FOOTER */
-footer {
-    background: #1f1f1f;
-    color: white;
-    padding: 30px;
-}
-
-/* WHATSAPP */
-.whatsapp {
+/* CARRITO */
+.cart {
     position: fixed;
-    bottom: 20px;
     right: 20px;
-    background: #25D366;
-    padding: 14px;
-    border-radius: 50%;
-    color: white;
+    top: 80px;
+    width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.cart h3 {
+    margin-top: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
 }
 </style>
 </head>
@@ -153,107 +86,80 @@ footer {
 
 <header>
 <h1>Plátano & Hogao</h1>
-<nav>
-<a href="#inicio">Inicio</a>
-<a href="#menu">Menú</a>
-<a href="#historia">Historia</a>
-<a href="#ingredientes">Materia Prima</a>
-<a href="#contacto">Contacto</a>
-</nav>
 </header>
 
-<section id="inicio" class="hero">
-<div>
-<h2>Cocina colombiana con identidad</h2>
-<a href="https://wa.me/573000000000" class="btn">Realizar pedido</a>
-</div>
+<section class="hero">
+<h2>Cocina colombiana</h2>
 </section>
 
-<section id="menu">
+<section>
 <h2>Menú</h2>
 
 <div class="cards">
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1625944525533-473f1b9c9b87">
 <h3>Clásico Campesino</h3>
-<p>Plátano maduro con hogao y queso campesino</p>
-<div class="price">$8.000</div>
+<p>Plátano con hogao y queso</p>
+<div class="price">8000</div>
+<button onclick="addToCart('Clásico',8000)">Agregar</button>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1604908812177-1cfa3a8b8c4d">
 <h3>Doble Crema</h3>
-<p>Plátano con hogao y queso cremoso</p>
-<div class="price">$9.000</div>
+<p>Plátano con queso cremoso</p>
+<div class="price">9000</div>
+<button onclick="addToCart('Doble',9000)">Agregar</button>
 </div>
 
 <div class="card">
-<img src="https://images.unsplash.com/photo-1617196037304-1e7a1c2d7e6a">
 <h3>Fusión</h3>
-<p>Plátano con mezcla de quesos</p>
-<div class="price">$10.000</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1585238342028-4aefb26cf0c4">
-<h3>Tradicional</h3>
-<p>Plátano con hogao clásico</p>
-<div class="price">$9.000</div>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1628088062854-d1870b4553da">
-<h3>Costeño</h3>
-<p>Plátano con queso costeño colombiano</p>
-<div class="price">$9.000</div>
+<p>Mezcla de quesos</p>
+<div class="price">10000</div>
+<button onclick="addToCart('Fusión',10000)">Agregar</button>
 </div>
 
 </div>
 </section>
 
-<section id="historia" class="historia">
-<h2>Historia del patacón</h2>
+<!-- CARRITO -->
+<div class="cart">
+<h3>Carrito</h3>
+<div id="cartItems"></div>
+<p>Total: $<span id="total">0</span></p>
+</div>
 
-<img src="https://images.unsplash.com/photo-1604908176997-431f68d5e7d3">
+<script>
+let cart = [];
 
-<p>
-El patacón es una preparación tradicional colombiana elaborada a partir del plátano verde, símbolo de identidad cultural.
-</p>
+function addToCart(name, price){
+    cart.push({name, price});
+    renderCart();
+}
 
-<p>
-Su textura crujiente y versatilidad lo convierten en un elemento fundamental de la gastronomía nacional.
-</p>
+function removeItem(index){
+    cart.splice(index,1);
+    renderCart();
+}
 
-</section>
+function renderCart(){
+    let cartItems = document.getElementById("cartItems");
+    let total = 0;
 
-<section id="ingredientes" class="historia">
-<h2>Materia prima</h2>
+    cartItems.innerHTML = "";
 
-<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+    cart.forEach((item, index)=>{
+        total += item.price;
 
-<p>
-El plátano, el hogao y los quesos tradicionales representan la base de la cocina colombiana.
-</p>
+        cartItems.innerHTML += `
+        <div class="cart-item">
+            ${item.name} - $${item.price}
+            <button onclick="removeItem(${index})">X</button>
+        </div>`;
+    });
 
-<p>
-Cada ingrediente refleja tradición, territorio y cultura.
-</p>
-
-</section>
-
-<section id="contacto">
-<h2>Contacto</h2>
-<p>Bogotá, Colombia</p>
-<p>300 000 0000</p>
-<a href="https://wa.me/573000000000" class="btn">Contactar</a>
-</section>
-
-<footer>
-<p>Plátano & Hogao · Cocina colombiana</p>
-</footer>
-
-<a href="https://wa.me/573000000000" class="whatsapp">W</a>
+    document.getElementById("total").innerText = total;
+}
+</script>
 
 </body>
 </html>
