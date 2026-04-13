@@ -10,7 +10,6 @@ body {
     margin: 0;
     font-family: 'Georgia', serif;
     background: linear-gradient(to bottom, #fff8e1, #f4f1ea);
-    color: #1f1f1f;
 }
 
 /* NAV */
@@ -29,31 +28,23 @@ header h1 {
     color: #c62828;
 }
 
-/* HERO */
+/* HERO CON TU IMAGEN */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-    url('https://images.unsplash.com/photo-1604908176997-431f68d5e7d3') center/cover;
+    background: 
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('IMG_1282.jpeg') center/cover no-repeat;
+
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
-/* BOTÓN */
-.btn {
-    margin-top: 10px;
-    padding: 12px 25px;
-    background: #ffca28;
-    border-radius: 25px;
-    cursor: pointer;
-    border: none;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #c62828;
-    color: white;
+.hero h2 {
+    font-size: 42px;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
 }
 
 /* SECCIONES */
@@ -88,6 +79,22 @@ section {
     border-radius: 10px;
 }
 
+/* BOTÓN */
+.btn {
+    margin-top: 10px;
+    padding: 12px 25px;
+    background: #ffca28;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #c62828;
+    color: white;
+}
+
 .price {
     color: #c62828;
     font-weight: bold;
@@ -103,6 +110,20 @@ section {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+}
+
+.qty button {
+    background: #c62828;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    cursor: pointer;
 }
 
 .checkout {
@@ -180,7 +201,11 @@ section {
 <a href="#" class="whatsapp">W</a>
 
 <script>
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function saveCart(){
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
 
 function addToCart(name, price){
     let item = cart.find(p => p.name === name);
@@ -189,6 +214,16 @@ function addToCart(name, price){
     } else {
         cart.push({name, price, qty:1});
     }
+    saveCart();
+    renderCart();
+}
+
+function changeQty(index, change){
+    cart[index].qty += change;
+    if(cart[index].qty <= 0){
+        cart.splice(index,1);
+    }
+    saveCart();
     renderCart();
 }
 
@@ -197,21 +232,42 @@ function renderCart(){
     let total = 0;
     container.innerHTML = "";
 
-    cart.forEach(item=>{
+    cart.forEach((item, index)=>{
         total += item.price * item.qty;
-        container.innerHTML += `${item.name} x${item.qty}<br>`;
+
+        container.innerHTML += `
+        <div class="cart-item">
+            ${item.name} x${item.qty}
+            <div class="qty">
+                <button onclick="changeQty(${index},-1)">-</button>
+                <button onclick="changeQty(${index},1)">+</button>
+            </div>
+        </div>`;
     });
 
     document.getElementById("total").innerText = total;
 }
 
 function sendWhatsApp(){
-    let message = "Pedido:%0A";
+    if(cart.length === 0){
+        alert("Carrito vacío");
+        return;
+    }
+
+    let message = "Hola, quiero pedir:%0A";
+    let total = 0;
+
     cart.forEach(item=>{
-        message += `- ${item.name} x${item.qty}%0A`;
+        message += `- ${item.name} x${item.qty} ($${item.price * item.qty})%0A`;
+        total += item.price * item.qty;
     });
+
+    message += `Total: $${total}`;
+
     window.open(`https://wa.me/573000000000?text=${message}`);
 }
+
+renderCart();
 </script>
 
 </body>
