@@ -12,7 +12,6 @@ body {
     background: linear-gradient(to bottom, #fff8e1, #f4f1ea);
 }
 
-/* NAV */
 header {
     position: fixed;
     width: 100%;
@@ -28,7 +27,6 @@ header h1 {
     color: #c62828;
 }
 
-/* HERO CON TU IMAGEN */
 .hero {
     height: 100vh;
     background: 
@@ -47,13 +45,11 @@ header h1 {
     text-shadow: 2px 2px 12px rgba(0,0,0,0.8);
 }
 
-/* SECCIONES */
 section {
     padding: 100px 40px;
     text-align: center;
 }
 
-/* CARDS */
 .cards {
     display: flex;
     flex-wrap: wrap;
@@ -79,7 +75,6 @@ section {
     border-radius: 10px;
 }
 
-/* BOTÓN */
 .btn {
     margin-top: 10px;
     padding: 12px 25px;
@@ -87,12 +82,6 @@ section {
     border-radius: 25px;
     cursor: pointer;
     border: none;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #c62828;
-    color: white;
 }
 
 .price {
@@ -100,7 +89,6 @@ section {
     font-weight: bold;
 }
 
-/* CARRITO */
 .cart {
     position: fixed;
     right: 20px;
@@ -135,7 +123,6 @@ section {
     cursor: pointer;
 }
 
-/* WHATSAPP */
 .whatsapp {
     position: fixed;
     bottom: 20px;
@@ -190,7 +177,6 @@ section {
 </div>
 </section>
 
-<!-- CARRITO -->
 <div class="cart">
 <h3>Tu pedido</h3>
 <div id="cartItems"></div>
@@ -198,7 +184,7 @@ section {
 <div class="checkout" onclick="sendWhatsApp()">Pedir por WhatsApp</div>
 </div>
 
-<a href="#" class="whatsapp">W</a>
+<a href="https://wa.me/573009476637" class="whatsapp">W</a>
 
 <script>
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -264,7 +250,7 @@ function sendWhatsApp(){
 
     message += `Total: $${total}`;
 
-    window.open(`https://wa.me/573000000000?text=${message}`);
+    window.open(`https://wa.me/573009476637?text=${message}`);
 }
 
 renderCart();
